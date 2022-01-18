@@ -1,5 +1,4 @@
 import { getLoginController } from '../../../adapters/controllers/authentication/login.js';
-import { logMiddleware } from '../../middlewares/log-middleware.js';
 import { LoginMiddleware } from '../../middlewares/login/login-middleware.js';
 
 export const loginRouter = express => {
@@ -9,7 +8,6 @@ export const loginRouter = express => {
   router
     .route('/')
     .post(
-      logMiddleware(`login at ${Date.now()}`),
       LoginMiddleware,
       loginController.login
     );
